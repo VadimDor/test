@@ -1,5 +1,5 @@
-<?php 
-class ControllerToolExportImport extends Controller { 
+<?php
+class ControllerToolExportImport extends Controller {
 	private $error = array();
 	private $ssl = 'SSL';
 
@@ -8,7 +8,7 @@ class ControllerToolExportImport extends Controller {
 		$this->ssl = (defined('VERSION') && version_compare(VERSION,'2.2.0.0','>=')) ? true : 'SSL';
 	}
 
-# test	
+# test	1
 	public function index() {
 		$this->load->language('tool/export_import');
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -50,7 +50,7 @@ class ControllerToolExportImport extends Controller {
 	protected function return_bytes($val)
 	{
 		$val = trim($val);
-	
+
 		switch (strtolower(substr($val, -1)))
 		{
 			case 'm': $val = (int)substr($val, 0, -1) * 1048576; break;
@@ -141,7 +141,7 @@ class ControllerToolExportImport extends Controller {
 	protected function getForm() {
 		$data = array();
 		$data['heading_title'] = $this->language->get('heading_title');
-		
+
 		$data['exist_filter'] = $this->model_tool_export_import->existFilter();
 
 		$data['text_export_type_category'] = ($data['exist_filter']) ? $this->language->get('text_export_type_category') : $this->language->get('text_export_type_category_old');
@@ -220,7 +220,7 @@ class ControllerToolExportImport extends Controller {
 
 		if (isset($this->session->data['success'])) {
 			$data['success'] = $this->session->data['success'];
-		
+
 			unset($this->session->data['success']);
 		} else {
 			$data['success'] = '';
@@ -347,7 +347,7 @@ class ControllerToolExportImport extends Controller {
 		$min_customer_id = $this->model_tool_export_import->getMinCustomerId();
 		$max_customer_id = $this->model_tool_export_import->getMaxCustomerId();
 		$count_customer = $this->model_tool_export_import->getCountCustomer();
-		
+
 		$data['min_product_id'] = $min_product_id;
 		$data['max_product_id'] = $max_product_id;
 		$data['count_product'] = $count_product;
